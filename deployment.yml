@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+ name: appdeployment
+spec: 
+ replicas: 3
+ selector:
+  matchLabels:
+   app: apachefrontend
+ template:
+  metadata:
+   labels:
+    app: apachefrontend
+  spec:
+   containers:
+   - name: blog
+     image: umangkhandelwal/septemberprt:v1
+     imagePullPolicy: Always
+     ports:
+      - containerPort: 80
